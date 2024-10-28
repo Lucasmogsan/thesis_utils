@@ -1,2 +1,3 @@
 download_benchmark_data/dataset/*
 output_analysis/runs/*
+output_analysis/comparison/*
