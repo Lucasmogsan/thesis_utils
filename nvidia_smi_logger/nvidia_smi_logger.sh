@@ -5,7 +5,7 @@
 
 
 # Default values for frequency and output directory
-DEFAULT_FREQUENCY=0.1
+DEFAULT_FREQUENCY=3.0
 DEFAULT_OUTPUT_DIR="."
 
 # Check for command-line arguments
