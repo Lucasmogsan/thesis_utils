@@ -10,6 +10,8 @@ gt_rgb_path = f"/home/aut/thesis_utils/download_benchmark_data/dataset/TUM/{scen
 # If using it to match poses from e.g. ORBSLAM3
 gt_depth_path = f"/home/aut/thesis_utils/output_analysis/comparison/TUM/freiburg3_long_office_household/ORBSLAM3/CameraTrajectoryTUMFR3.txt"
 
+
+
 # Load ground truth poses
 gt_poses = []
 with open(gt_traj_path, 'r') as f:

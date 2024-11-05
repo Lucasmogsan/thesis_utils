@@ -9,7 +9,7 @@ chmod +x nvidia_smi_logger.sh
 ./nvidia_smi_logger.sh <frequency> <output_directory>
 ```
 
-# download_benchmar_data
+# download_benchmark_data
 Downloads the benchmarking dataset (TUM and Replica) and saves it locally (added to gitignore)
 
 ```bash
@@ -19,4 +19,11 @@ chmod +x download_tum.sh
 
 ./download_replica.sh
 ./download_tum.sh
+```
+
+# output_analysis
+Performs analysis on some output data. Mainly trajectories.
+Install python-packages:
+```bash
+pip install -r requirements.txt
 ```
