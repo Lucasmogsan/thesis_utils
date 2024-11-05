@@ -4,8 +4,11 @@ scene = "rgbd_dataset_freiburg3_long_office_household"
 
 # Paths to the ground truth trajectory and depth file
 gt_traj_path = f"/home/aut/thesis_utils/download_benchmark_data/dataset/TUM/{scene}/groundtruth.txt"
-gt_depth_path = f"/home/aut/thesis_utils/download_benchmark_data/dataset/TUM/{scene}/depth.txt"
+#gt_depth_path = f"/home/aut/thesis_utils/download_benchmark_data/dataset/TUM/{scene}/depth.txt"
 gt_rgb_path = f"/home/aut/thesis_utils/download_benchmark_data/dataset/TUM/{scene}/rgb.txt"
+
+# If using it to match poses from e.g. ORBSLAM3
+gt_depth_path = f"/home/aut/thesis_utils/output_analysis/comparison/TUM/freiburg3_long_office_household/ORBSLAM3/CameraTrajectoryTUMFR3.txt"
 
 # Load ground truth poses
 gt_poses = []
@@ -48,7 +51,7 @@ for depth_timestamp, _ in depth_timestamps:
     matched_poses.append(closest_pose)
 
 # save to file but name it matched_poses.txt
-output_file = gt_traj_path.replace("groundtruth.txt", "groundtruth_matched.txt")
+output_file = gt_traj_path.replace("groundtruth.txt", "groundtruth_matched_orb.txt")
 print(f"Saving matched poses to {output_file}")
 
 with open(output_file, 'w') as f:

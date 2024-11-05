@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.spatial.transform import Rotation as R
 
 dataset = "TUM"
-scene = "freiburg2_xyz"
+scene = "freiburg1_room"
 
 # Load the data
-pred_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/rtabmap_poses_1.txt"
-gt_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/poses_gt_1.txt"
+pred_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/rtabmap_poses_3.txt"
+gt_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/poses_gt_3.txt"
 pred_rtabmap = np.loadtxt(pred_pose_rtabmap, comments='#')
 gt_rtabmap = np.loadtxt(gt_pose_rtabmap, comments='#')
 
