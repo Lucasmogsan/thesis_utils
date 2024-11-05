@@ -6,7 +6,7 @@ dataset = "TUM"
 scene = "freiburg3_long_office_household"
 
 # Load ground truth poses
-gt_pose = f"/home/aut/thesis_utils/download_benchmark_data/dataset/{dataset}/rgbd_dataset_{scene}/groundtruth_matched.txt"
+gt_pose = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/gt/groundtruth_matched.txt"
 gt_txt = np.loadtxt(gt_pose)
 gt_t = gt_txt[:, 1:4]  # position
 gt_R = gt_txt[:, 4:] # orientation
