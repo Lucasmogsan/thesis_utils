@@ -6,7 +6,7 @@ dataset = "TUM"
 scene = "freiburg3_long_office_household"
 
 # Load ground truth poses
-gt_pose = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/gt/groundtruth_matched.txt"
+gt_pose = f"../output_analysis/comparison/{dataset}/{scene}/gt/groundtruth_matched.txt"
 gt_txt = np.loadtxt(gt_pose)
 gt_t = gt_txt[:, 1:4]  # position
 gt_R = gt_txt[:, 4:] # orientation
@@ -15,33 +15,33 @@ origin_R = gt_R[0]
 origin_R_mat = R.from_quat(origin_R).as_matrix()
 
 # Load predicted poses
-#pred_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/poses.txt"
-#gt_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/gt_poses.txt"
-pred_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/poses.txt"
-gt_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/gt_poses.txt"
-#pred_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/poses.txt"
-#gt_pose_gsicp = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/gt_poses.txt"
+#pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/poses.txt"
+#gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/gt_poses.txt"
+pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/poses.txt"
+gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/gt_poses.txt"
+#pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/poses.txt"
+#gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/gt_poses.txt"
 pred_gsicp_txt = np.loadtxt(pred_pose_gsicp)
 gt_gsicp_txt = np.loadtxt(gt_pose_gsicp)
 
-pred_pose_loopy = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_predicted.txt"
-gt_pose_loopy = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_gt.txt"
+pred_pose_loopy = f"../output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_predicted.txt"
+gt_pose_loopy = f"../output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_gt.txt"
 pred_loopy_txt = np.loadtxt(pred_pose_loopy)
 gt_loopy_txt = np.loadtxt(gt_pose_loopy)
 
-pred_pose_photo = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/Photo-SLAM/photo_rgbd_dataset_freiburg3_long_office_household/CameraTrajectory_TUM.txt"
-gt_pose_photo = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/Photo-SLAM/photo_rgbd_dataset_freiburg3_long_office_household/groundtruth_matched_photo.txt"
+pred_pose_photo = f"../output_analysis/comparison/{dataset}/{scene}/Photo-SLAM/photo_rgbd_dataset_freiburg3_long_office_household/CameraTrajectory_TUM.txt"
+gt_pose_photo = f"../output_analysis/comparison/{dataset}/{scene}/Photo-SLAM/photo_rgbd_dataset_freiburg3_long_office_household/groundtruth_matched_photo.txt"
 pred_photo_txt = np.loadtxt(pred_pose_photo)
 gt_photo_txt = np.loadtxt(gt_pose_photo)
 
 
-pred_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/rtabmap_poses_3.txt"
-gt_pose_rtabmap = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/RTABMAP/poses_gt_3.txt"
+pred_pose_rtabmap = f"../output_analysis/comparison/{dataset}/{scene}/RTABMAP/rtabmap_poses_3.txt"
+gt_pose_rtabmap = f"../output_analysis/comparison/{dataset}/{scene}/RTABMAP/poses_gt_3.txt"
 pred_rtabmap_txt = np.loadtxt(pred_pose_rtabmap)
 gt_rtabmap_txt = np.loadtxt(gt_pose_rtabmap)
 
-pred_pose_orbslam = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/ORBSLAM3/CameraTrajectoryTUMFR3.txt"
-gt_pose_orbslam = f"/home/aut/thesis_utils/output_analysis/comparison/{dataset}/{scene}/ORBSLAM3/groundtruth_matched_orb.txt"
+pred_pose_orbslam = f"../output_analysis/comparison/{dataset}/{scene}/ORBSLAM3/CameraTrajectory_TUM.txt"
+gt_pose_orbslam = f"../output_analysis/comparison/{dataset}/{scene}/ORBSLAM3/groundtruth_matched_orb.txt"
 pred_orbslam_txt = np.loadtxt(pred_pose_orbslam)
 gt_orbslam_txt = np.loadtxt(gt_pose_orbslam)
 
@@ -85,10 +85,9 @@ gt_orbslam = gt_orbslam_txt[:, 1:4]  # Extract tx, ty, tz
 plt.figure(figsize=(10, 6))
 plt.plot(gt_t[:, 0], gt_t[:, 1], 'b-', label="Ground Truth")
 
-plt.plot(gt_gsicp[:, 0], gt_gsicp[:, 1], 'y-', label="GS-ICP-SLAM GT")
+#plt.plot(gt_gsicp[:, 0], gt_gsicp[:, 1], 'y-', label="GS-ICP-SLAM GT")
 #plt.plot(gt_loopy[:, 0], gt_loopy[:, 1], 'c:', label="Loopy-SLAM GT")
 #plt.plot(gt_rtabmap[:, 0], gt_rtabmap[:, 1], 'y-.', label="RTABMAP GT")
-
 
 plt.plot(pred_gsicp[:, 0], pred_gsicp[:, 1], 'r--', label="GS-ICP-SLAM")
 plt.plot(pred_loopy[:, 0], pred_loopy[:, 1], 'g-.', label="Loopy-SLAM")
