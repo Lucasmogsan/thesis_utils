@@ -17,14 +17,14 @@ origin_R_mat = R.from_quat(origin_R).as_matrix()
 # Load predicted poses
 #pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/poses.txt"
 #gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/20241025_133454/gt_poses.txt"
-pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/poses.txt"
-gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/gt_poses.txt"
-#pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/poses.txt"
-#gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/gt_poses.txt"
+#pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/poses.txt"
+#gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/med_20241104_145334/gt_poses.txt"
+pred_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/poses.txt"
+gt_pose_gsicp = f"../output_analysis/comparison/{dataset}/{scene}/GS_ICP_SLAM/bad_20241104_144416/gt_poses.txt"
 pred_gsicp_txt = np.loadtxt(pred_pose_gsicp)
 gt_gsicp_txt = np.loadtxt(gt_pose_gsicp)
 
-pred_pose_loopy = f"../output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_predicted.txt"
+pred_pose_loopy = f"../output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_predicted.txt"    # 20241028_151425
 gt_pose_loopy = f"../output_analysis/comparison/{dataset}/{scene}/LoopySLAM/20241028_151425/Loopy_TUM_RGBD_freiburg3_office_gt.txt"
 pred_loopy_txt = np.loadtxt(pred_pose_loopy)
 gt_loopy_txt = np.loadtxt(gt_pose_loopy)
@@ -83,35 +83,35 @@ gt_orbslam = gt_orbslam_txt[:, 1:4]  # Extract tx, ty, tz
 
 ## Plotting the path ##
 plt.figure(figsize=(10, 6))
-plt.plot(gt_t[:, 0], gt_t[:, 1], 'b-', label="Ground Truth")
+plt.plot(gt_t[:, 0], gt_t[:, 1], '-', label="Ground Truth", color="blue")
 
 #plt.plot(gt_gsicp[:, 0], gt_gsicp[:, 1], 'y-', label="GS-ICP-SLAM GT")
 #plt.plot(gt_loopy[:, 0], gt_loopy[:, 1], 'c:', label="Loopy-SLAM GT")
 #plt.plot(gt_rtabmap[:, 0], gt_rtabmap[:, 1], 'y-.', label="RTABMAP GT")
 
-plt.plot(pred_gsicp[:, 0], pred_gsicp[:, 1], 'r--', label="GS-ICP-SLAM")
-plt.plot(pred_loopy[:, 0], pred_loopy[:, 1], 'g-.', label="Loopy-SLAM")
-plt.plot(pred_photo[:, 0], pred_photo[:, 1], 'c:', label="Photo-SLAM")
-plt.plot(pred_rtabmap[:, 0], pred_rtabmap[:, 1], 'm:', label="RTABMAP")
-plt.plot(pred_orbslam[:, 0], pred_orbslam[:, 1], 'k:', label="ORBSLAM3")
+plt.plot(pred_gsicp[:, 0], pred_gsicp[:, 1], ':', label="GS-ICP-SLAM", color="red")
+plt.plot(pred_loopy[:, 0], pred_loopy[:, 1], ':', label="Loopy-SLAM", color="green")
+plt.plot(pred_photo[:, 0], pred_photo[:, 1], ':', label="Photo-SLAM", color="cyan")
+plt.plot(pred_rtabmap[:, 0], pred_rtabmap[:, 1], ':', label="RTABMAP", color="magenta")
+plt.plot(pred_orbslam[:, 0], pred_orbslam[:, 1], ':', label="ORBSLAM3", color="orange")
 
 ## Mark the start and end points ##
-plt.plot(gt_t[0, 0], gt_t[0, 1], 'bo', markersize=10, label="GT Start")
-plt.plot(gt_t[-1, 0], gt_t[-1, 1], 'b*', markersize=10, label="GT End")
-plt.plot(pred_gsicp[0, 0], pred_gsicp[0, 1], 'ro', markersize=12, label="GS-ICP Start")
-plt.plot(pred_gsicp[-1, 0], pred_gsicp[-1, 1], 'r*', markersize=12, label="GS-ICP End")
-plt.plot(pred_loopy[0, 0], pred_loopy[0, 1], 'go', markersize=12, label="Loopy Start")
-plt.plot(pred_loopy[-1, 0], pred_loopy[-1, 1], 'g*', markersize=12, label="Loopy End")
-plt.plot(pred_photo[0, 0], pred_photo[0, 1], 'co', markersize=12, label="Photo Start")
-plt.plot(pred_photo[-1, 0], pred_photo[-1, 1], 'c*', markersize=12, label="Photo End")
-plt.plot(pred_rtabmap[0, 0], pred_rtabmap[0, 1], 'mo', markersize=12, label="RTABMAP Start")
-plt.plot(pred_rtabmap[-1, 0], pred_rtabmap[-1, 1], 'm*', markersize=12, label="RTABMAP End")
-plt.plot(pred_orbslam[0, 0], pred_orbslam[0, 1], 'ko', markersize=12, label="ORBSLAM3 Start")
-plt.plot(pred_orbslam[-1, 0], pred_orbslam[-1, 1], 'k*', markersize=12, label="ORBSLAM3 End")
+plt.plot(gt_t[0, 0], gt_t[0, 1], 'o', markersize=10, label="GT Start", color="blue")
+plt.plot(gt_t[-1, 0], gt_t[-1, 1], '*', markersize=10, label="GT End", color="blue")
+plt.plot(pred_gsicp[0, 0], pred_gsicp[0, 1], 'o', markersize=12, label="GS-ICP Start", color="red")
+plt.plot(pred_gsicp[-1, 0], pred_gsicp[-1, 1], '*', markersize=12, color="red")
+plt.plot(pred_loopy[0, 0], pred_loopy[0, 1], 'o', markersize=12, label="Loopy Start", color="green")
+plt.plot(pred_loopy[-1, 0], pred_loopy[-1, 1], '*', markersize=12, color="green")
+plt.plot(pred_photo[0, 0], pred_photo[0, 1], 'o', markersize=12, label="Photo Start", color="cyan")
+plt.plot(pred_photo[-1, 0], pred_photo[-1, 1], '*', markersize=12, color="cyan")
+plt.plot(pred_rtabmap[0, 0], pred_rtabmap[0, 1], 'o', markersize=12, label="RTAB-Map Start", color="magenta")
+plt.plot(pred_rtabmap[-1, 0], pred_rtabmap[-1, 1], '*', markersize=12, color="magenta")
+plt.plot(pred_orbslam[0, 0], pred_orbslam[0, 1], 'o', markersize=12, label="ORB-SLAM3 Start", color="orange")
+plt.plot(pred_orbslam[-1, 0], pred_orbslam[-1, 1], '*', markersize=12, color="orange")
 
 # Add labels and title
-plt.xlabel("X")
-plt.ylabel("Y")
+plt.xlabel("X (m)")
+plt.ylabel("Y (m)")
 plt.legend()
 plt.title("Trajectory Comparison: Predicted vs Ground Truth")
 plt.show()
@@ -156,15 +156,15 @@ err_orbslam_resampled = np.interp(x_uniform, x_orbslam, err_orbslam)
 
 # Plotting the resampled error arrays
 plt.figure(figsize=(10, 6))
-plt.plot(err_gsicp_resampled, 'r-', label="GS-ICP-SLAM")
-plt.plot(err_loopy_resampled, 'g-', label="Loopy-SLAM")
-plt.plot(err_rtabmap_resampled, 'm-', label="RTABMAP")
-plt.plot(err_photo_resampled, 'c-', label="Photo-SLAM")
-plt.plot(err_orbslam_resampled, 'k-', label="ORBSLAM3")
-plt.xlabel("Frame Index (Resampled)")
+plt.plot(err_gsicp_resampled, '-', label="GS-ICP-SLAM", color="red")
+plt.plot(err_loopy_resampled, '-', label="Loopy-SLAM", color="green")
+plt.plot(err_rtabmap_resampled, '-', label="RTAB-Map", color="magenta")
+plt.plot(err_photo_resampled, '-', label="Photo-SLAM", color="cyan")
+plt.plot(err_orbslam_resampled, '-', label="ORB-SLAM3", color="orange")
+plt.xlabel("Frame Index")
 plt.ylabel("Error (cm)")
 plt.legend()
-plt.title("Positional Error (x,y,z) between Predicted and Ground Truth")
+plt.title("Positional Error (x,y,z) Comparison: Predicted vs Ground Truth")
 plt.show()
 
 

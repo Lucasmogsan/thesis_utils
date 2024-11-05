@@ -21,6 +21,12 @@ chmod +x download_tum.sh
 ./download_tum.sh
 ```
 
+For GS-ICP the replica needs to be modified (put into other folders). This can be done by running:
+```bash
+cd download_benchmark_data
+./convert_replica_gs_icp.sh
+```
+
 # output_analysis
 Performs analysis on some output data. Mainly trajectories.
 Install python-packages:
