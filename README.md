@@ -33,3 +33,5 @@ Install python-packages:
 ```bash
 pip install -r requirements.txt
 ```
+
+Run all scripts from the src folder (as they have some relative paths)

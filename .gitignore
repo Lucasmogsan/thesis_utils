@@ -1,3 +1,8 @@
+### PYTHON STUFF ###
+.vscode/
+**/__pycache__/
+
+### DATA ###
 download_benchmark_data/dataset/*
 output_analysis/runs/*
 output_analysis/comparison/Replica/*

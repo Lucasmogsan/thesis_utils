@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load data from csv downloaded from wandb
-data = pd.read_csv("output_analysis/loopy_room0_gpu_mem.csv")
+data = pd.read_csv("../output_analysis/loopy_room0_gpu_mem.csv")
 
 print(data.head())
 
