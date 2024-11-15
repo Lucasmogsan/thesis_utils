@@ -28,7 +28,7 @@ cd download_benchmark_data
 ```
 
 # output_analysis
-Performs analysis on some output data. Mainly trajectories.
+Performs analysis on some output data.
 Install python-packages:
 ```bash
 pip install -r requirements.txt

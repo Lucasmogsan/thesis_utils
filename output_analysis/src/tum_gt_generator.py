@@ -8,8 +8,8 @@ def find_closest_pose(depth_timestamp, gt_poses):
 
 
 dataset = "TUM"
-scene = "freiburg3_long_office_household"
-method = "ORBSLAM3"
+scene = "freiburg1_room"
+method = "Photo-SLAM"
 print(f"Generating ground truth poses for {scene} comparing to {method} predictions")
 
 if dataset == "TUM":
@@ -20,7 +20,7 @@ gt_traj_path = f"../../download_benchmark_data/dataset/TUM/{scene_dataset}/groun
 
 
 for i in range(0, 3):
-    traj_path = f"../../output_analysis/comparison/TUM/{scene}/{method}/fr3_run_{i}.txt"    # Path to the predicted trajectory
+    traj_path = f"../../output_analysis/comparison/TUM/{scene}/{method}/fr1_run_{i}.txt"    # Path to the predicted trajectory
 
     # Load ground truth poses
     gt_poses = []

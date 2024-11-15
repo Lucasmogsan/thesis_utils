@@ -70,4 +70,4 @@ def _ssim(img1, img2, window, window_size, channel, size_average=True):
         return ssim_map, ssim_map.mean(1).mean(1).mean(1)
 
 def mse2psnr(x):
-    return -10.*torch.log(x)/torch.log(torch.tensor(10.))
+    return -10. * torch.log10(x)

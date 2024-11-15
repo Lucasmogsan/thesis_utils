@@ -6,3 +6,4 @@
 download_benchmark_data/dataset/*
 output_analysis/runs/*
 output_analysis/comparison/Replica/*
+output_analysis/comparison/TUM/*

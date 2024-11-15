@@ -141,5 +141,13 @@ if __name__ == '__main__':
 # EXAMPLE USAGE:
 ## First associate the RGB and depth images
 ### root@rtx1:/home/thesis_utils/output_analysis/utils# python associate.py ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg1_desk/rgb.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg1_desk/depth.txt
+
+### python associate.py ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg3_long_office_household/rgb.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg3_long_office_household/depth.txt
+
 ## Next associate the predicted and ground truth poses
-### root@rtx1:/home/thesis_utils/output_analysis/utils# python associate.py ../../output_analysis/comparison/TUM/freiburg1_desk/ORBSLAM3/fr1_run_0.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg1_desk/matched_rgb_depth.txt 
+### python associate.py ../../output_analysis/comparison/TUM/freiburg3_long_office_household/Photo-SLAM/fr3_run_2.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg3_long_office_household/gt_matched_rgb_d_.txt 
+
+
+
+# python associate.py ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg2_xyz/rgb.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg2_xyz/depth.txt
+# python associate.py ../../output_analysis/comparison/TUM/freiburg2_xyz/Photo-SLAM/fr2_run_2.txt ../../download_benchmark_data/dataset/TUM/rgbd_dataset_freiburg2_xyz/gt_matched_rgb_d_.txt 
