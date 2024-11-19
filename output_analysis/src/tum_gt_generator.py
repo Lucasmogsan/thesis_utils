@@ -8,7 +8,7 @@ def find_closest_pose(depth_timestamp, gt_poses):
 
 
 dataset = "TUM"
-scene = "freiburg1_room"
+scene = "freiburg1_desk"
 method = "Photo-SLAM"
 print(f"Generating ground truth poses for {scene} comparing to {method} predictions")
 
