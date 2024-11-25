@@ -53,7 +53,7 @@ def compute_sgbm_disparity(sgbm_obj, left_image, right_image, CAM_LEFT=0, CAM_RI
         right_image = cv2.cvtColor(right_image, cv2.COLOR_BGR2GRAY)
 
     # Compute disparity map
-    disparity = sgbm_obj.compute(left_image, right_image).astype(np.float32) / 16.0
+    disparity = sgbm_obj.compute(left_image, right_image).astype(np.float32) / 16.0     # divide by 16 to get the real disparity values (as OpenCV uses fixed-point arithmetic, scaling by 16)
 
     return disparity
 
@@ -68,7 +68,7 @@ def calc_depth_map(disp_left, K_left, T_left, T_right):
     # Get the distance between the cameras from the t matrices (baseline)
     b = np.abs(T_left[0] - T_right[0])[0]
 
-    print(f"f: {f}, b: {b}")
+    #print(f"f: {f}, b: {b}")
     
     # Replace all instances of 0 and -1 disparity with a small minimum value (to avoid div by 0 or negatives)
     disp_left[disp_left <= 0] = 1e-5
