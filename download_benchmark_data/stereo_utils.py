@@ -22,22 +22,22 @@ def load_images(path_left, path_right, CAM_LEFT, CAM_RIGHT, img_idx=0):
 
     return left_image, right_image
 
-def initialize_sgmb_params(num_disparities=5*16, block_size=7, window_size=5):
+def initialize_sgmb_params(num_disparities=10*16, block_size=7, window_size=5):
         # P1 and P2 control disparity smoothness (recommended values below)
-    P1 = 8 * 3 * window_size**2
-    P2 = 32 * 3 * window_size**2
+    P1 = 2 * 3 * window_size**2
+    P2 = 64 * 3 * window_size**2
 
     # Create stereo block matching object
     sgbm_obj = cv2.StereoSGBM_create(
-        minDisparity=0,     # Minimum possible disparity value
+        minDisparity=5,     # Minimum possible disparity value
         numDisparities=num_disparities,  # Wider disparity range for outdoor scenes
         blockSize=block_size,         # Moderate block size for balanced details and noise
         P1=P1,     # Adjusted for grayscale images
         P2=P2,
-        disp12MaxDiff=1,     # Enforce left-right consistency
-        uniquenessRatio=15,  # Avoid ambiguous matches
-        speckleWindowSize=50, # Remove small noise
-        speckleRange=2,       # Allow small disparity variations
+        disp12MaxDiff=5,     # Enforce left-right consistency - if disparity difference is > XX, reject the pixel
+        uniquenessRatio=5,  # Avoid ambiguous matches
+        speckleWindowSize=5, # Speckle window size is set to XX pixels (mea)
+        speckleRange=5,       # Speckle range is set to X pixels (meaning points with disparity of X pixels or less are considered speckles and are removed)
         mode=cv2.STEREO_SGBM_MODE_HH  # Better results for calibrated cameras
     )
 
@@ -98,18 +98,22 @@ def get_calib_matrices(CAM_LEFT, CAM_RIGHT, path_calib_cam_to_cam):
     with open(path_calib_cam_to_cam, "r") as file:
         lines = file.readlines()
     K_left = None
+    P_left = None
     T_left = None
     T_right = None
     for line in lines:
         if line.startswith(f"K_0{CAM_LEFT}"):
             K_left = np.array([float(x) for x in line.split(":")[1].strip().split()])
+        if line.startswith(f"P_rect_0{CAM_LEFT}"):
+            P_left = np.array([float(x) for x in line.split(":")[1].strip().split()])
         if line.startswith(f"T_0{CAM_LEFT}"):
             T_left = np.array([float(x) for x in line.split(":")[1].strip().split()])
         if line.startswith(f"T_0{CAM_RIGHT}"):
             T_right = np.array([float(x) for x in line.split(":")[1].strip().split()])
     # Reshape into matrices
     K_left = K_left.reshape(3, 3)
+    P_left = P_left.reshape(3, 4)
     T_left = T_left.reshape(3, 1)
     T_right = T_right.reshape(3, 1)
 
-    return K_left, T_left, T_right
+    return K_left, P_left, T_left, T_right
